@@ -23,6 +23,12 @@ nav {
 
 .social li {
     height: 25%;
+    transition: 500ms;
+}
+
+.social li:hover{
+    background: rgba(47, 31, 137,);
+    transition: 500ms;
 }
 
 a{

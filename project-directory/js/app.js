@@ -1,5 +1,10 @@
 'use strict';
 var correct = 0;
+var questions = ['Did Nathan Cashman graduate from college?', 'Does Nathan Cashman play bass?',
+  'Does Nathan Cashman live in Cedar Rapids?', 'Does Nathan Cashman like anime?',
+  'Does Nathan Cashman live with his parents?', 'I\'m thinking of a number between 1 and 10, what is it?',
+  'What is one instrument Nathan Cashman is proficient on?'];
+console.log(questions);
 
 function question1(){
   var question = 'Did Nathan Cashman graduate from college?';
@@ -103,32 +108,32 @@ function guessingGame(){
   var randomNumber = Math.floor(Math.random()*10+1);
   console.log(randomNumber);
   var answer = prompt(question);
-  var guess = 0;
+  var guessCount = 0;
   while (true){
     if (answer === null){
       console.log('Exitting loop.');
       break;
     } else if (isNaN(Number(answer))=== true){
       answer = prompt('That is not a number, try again.');
-      guess++;
+      guessCount++;
     } else {
       if (Number(answer) > randomNumber){
         answer = prompt('Too high, guess again!');
       } else if (answer < randomNumber){
         answer = prompt('Too low, guess again!');
-      } 
-      guess++;
-      console.log(guess);
+      }
+      guessCount++;
+      console.log(guessCount);
     }
-    if (guess === 4 && Number(answer) !== randomNumber){
+    if (guessCount === 4 && Number(answer) !== randomNumber){
       alert('That\'s enough, it was '+randomNumber+'.');
       break;
     } else if (answer !== null && Number(answer) === randomNumber){
-      if (guess === 1){
+      if (guessCount === 1){
         alert('You got it on your first try!');
         correct++;
       } else {
-        alert('You got it in '+guess+' tries!');
+        alert('You got it in '+guessCount+' tries!');
         correct++;
       }
       break;
@@ -143,7 +148,7 @@ function guessingGame2(){
   var instruments = ['trombone', 'euphonium', 'trumpet', 'clarinet', 'saxophone', 'french horn', 'tuba'];
   console.log(instruments);
   var question = 'What is one instrument Nathan Cashman is proficient on?';
-  var guess = 1;
+  var guessCount = 1;
   var answer = prompt(question);
   while (true){
     if (answer === null){
@@ -151,23 +156,23 @@ function guessingGame2(){
       break;
     } else if(instruments.indexOf(answer.toLowerCase().trim()) < 0){
       answer = prompt('I am not proficient on '+answer.toLowerCase().trim()+'. Guess again!');
-      guess++;
+      guessCount++;
     }
-    if (guess === 6 && (instruments.indexOf(answer.toLowerCase().trim()) < 0)){
+    if (guessCount === 6 && (instruments.indexOf(answer.toLowerCase().trim()) < 0)){
       alert('I actually play '+ instruments.join(', ' )+'.');
       break;
     } else if (answer !== null && (instruments.indexOf(answer.toLowerCase().trim()) >=0)){
-      console.log(guess);
-      if (guess === 1){
+      console.log(guessCount);
+      if (guessCount === 1){
         alert('One guess is all you need! In fact, I play '+ instruments.join(', ' ));
         correct++;
         break;
       } else {
-        alert('You got it in '+guess+' tries! I play '+ instruments.join(', ' )+'.');
+        alert('You got it in '+guessCount+' tries! I play '+ instruments.join(', ' )+'.');
         correct++;
         break;
       }
-    } 
+    }
   }
 
   var el = document.getElementById('answer7');
@@ -177,11 +182,13 @@ function guessingGame2(){
 function answerCorrect(){
   alert('You answered '+correct+' correct out of a possible 7!');
 }
-question1();
-question2();
-question3();
-question4();
-question5();
-guessingGame();
-guessingGame2();
-answerCorrect();
+function startQuiz(){
+  question1();
+  question2();
+  question3();
+  question4();
+  question5();
+  guessingGame();
+  guessingGame2();
+  answerCorrect();
+}
