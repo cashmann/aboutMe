@@ -192,3 +192,5 @@ function startQuiz(){
   guessingGame2();
   answerCorrect();
 }
+
+startQuiz();
